@@ -1,0 +1,15 @@
+.main {
+  color: white;
+  width: 45vw;
+  height: 35vh;
+  display: flex;
+  flex-direction: row;
+}
+body {
+  margin: 0px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
