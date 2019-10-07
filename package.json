@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "vgBayClient",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --hot",
+    "start": "webpack-dev-server --config webpack.dev.js --content-base src --hot --inline",
     "build": "webpack --config webpack.dev.js"
   },
   "main": "index.js",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@material-ui/core": "^4.5.0",
     "file-loader": "^4.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
