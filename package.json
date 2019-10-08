@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "vgBayClient",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --content-base src --hot --inline",
+    "start": "webpack-dev-server --config webpack.dev.js  --hot --inline",
     "build": "webpack --config webpack.dev.js"
   },
   "main": "index.js",
