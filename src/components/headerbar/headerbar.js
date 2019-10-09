@@ -8,7 +8,7 @@ import "./headerbar.css";
 class HeaderBar extends React.Component {
   render = () => {
     return (
-      <AppBar className="header">
+      <AppBar>
         <Toolbar className="toolbar" position="fixed">
           <Button
             className="button"

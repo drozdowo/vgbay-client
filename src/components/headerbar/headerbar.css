@@ -1,9 +1,3 @@
-.header {
-  width: 100%;
-  height: 10vh;
-  max-height: 150px;
-}
-
 .toolbar {
   display: flex;
   height: 100%;
