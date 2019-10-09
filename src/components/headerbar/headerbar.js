@@ -10,8 +10,22 @@ class HeaderBar extends React.Component {
     return (
       <AppBar className="header">
         <Toolbar className="toolbar" position="fixed">
-          <Button className="button"> Login </Button>
-          <Button className="button"> Post an Ad </Button>
+          <Button
+            className="button"
+            onClick={() => {
+              this.props.setActiveComponent("Signup");
+            }}
+          >
+            Sign Up
+          </Button>
+          <Button
+            className="button"
+            onClick={() => {
+              this.props.setActiveComponent("Login");
+            }}
+          >
+            Log In
+          </Button>
         </Toolbar>
       </AppBar>
     );
