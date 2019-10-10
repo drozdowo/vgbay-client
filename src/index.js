@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import HeaderBar from "./components/headerbar/headerbar";
 import Home from "./components/home/home";
+import Login from "./components/login/login";
+import Signup from "./components/signup/signup";
+
 import "./index.css";
 
 class App extends React.Component {
@@ -14,7 +17,6 @@ class App extends React.Component {
 
   swapActiveComponent = newComponent => {
     this.setState({ activeComponent: newComponent });
-    console.log("swapping to: ", newComponent);
   };
 
   render() {
@@ -22,11 +24,15 @@ class App extends React.Component {
     if (this.state.activeComponent === "Home") {
       comp = <Home />;
     }
+    if (this.state.activeComponent === "Login") {
+      comp = <Login />;
+    }
+    if (this.state.activeComponent === "Signup") {
+      comp = <Signup />;
+    }
     return (
       <div className="main">
-        <div className="header">
-          <HeaderBar setActiveComponent={this.swapActiveComponent} />
-        </div>
+        <HeaderBar setActiveComponent={this.swapActiveComponent} />
         {comp}
       </div>
     );

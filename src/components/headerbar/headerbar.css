@@ -1,7 +1,11 @@
 .toolbar {
   display: flex;
-  height: 100%;
   flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+.spacer {
+  flex: 40;
 }
 
 .button {

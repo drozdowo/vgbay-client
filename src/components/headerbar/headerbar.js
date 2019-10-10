@@ -8,9 +8,19 @@ import "./headerbar.css";
 class HeaderBar extends React.Component {
   render = () => {
     return (
-      <AppBar>
-        <Toolbar className="toolbar" position="fixed">
+      <AppBar position="relative">
+        <Toolbar>
           <Button
+            className="button"
+            onClick={() => {
+              this.props.setActiveComponent("Home");
+            }}
+          >
+            🏠 vgBay - gang shit
+          </Button>
+          <div className="spacer" />
+          <Button
+            height="100%"
             className="button"
             onClick={() => {
               this.props.setActiveComponent("Signup");
@@ -20,6 +30,7 @@ class HeaderBar extends React.Component {
           </Button>
           <Button
             className="button"
+            height="100%"
             onClick={() => {
               this.props.setActiveComponent("Login");
             }}
