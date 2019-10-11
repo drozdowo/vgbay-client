@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ * Home Component
+ * This will just display some news for the users, and inform them of the website.
+ */
 class Home extends React.Component {
   render = () => {
     return (
