@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Modal from "@material-ui/core/Modal";
 import "./signup.css";
 import Axios from "axios";
 
@@ -9,7 +10,10 @@ class Signup extends React.Component {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      showModal: false,
+      modalHeader: "",
+      modalText: ""
     };
   }
   signUp = async () => {
@@ -19,7 +23,12 @@ class Signup extends React.Component {
       username: user,
       password: pass
     });
-    console.log("res", res);
+    console.log(res);
+    this.setState({
+      showModal: true,
+      modalHeader: "Sign Up",
+      modalText: res.data
+    });
   };
 
   inputUpdate = evt => {
@@ -31,9 +40,26 @@ class Signup extends React.Component {
     console.log(this.state);
   };
 
+  open = () => {
+    return this.state.showModal;
+  };
+
+  handleClose = () => {
+    this.setState({ showModal: false });
+  };
+
   render = () => {
+    let modal;
+    if (this.state.showModal) {
+      modal = (
+        <Modal open={true} onClose={this.handleClose}>
+          <div className="modaldiv">{this.state.modalText}</div>
+        </Modal>
+      );
+    }
     return (
       <div className="component">
+        {modal}
         <h1> Sign Up: </h1>
         <TextField
           className="textinput"
