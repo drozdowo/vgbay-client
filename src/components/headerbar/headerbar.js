@@ -16,7 +16,7 @@ class HeaderBar extends React.Component {
               this.props.setActiveComponent("Home");
             }}
           >
-            🏠 vgBay - gang shit
+            🏠 vgBay
           </Button>
           <div className="spacer" />
           <Button
