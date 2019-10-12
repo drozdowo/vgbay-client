@@ -11,9 +11,23 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      activeComponent: "Home"
+      activeComponent: "Home",
+      user: {}
     };
   }
+
+  componentWillUpdate = () => {
+    console.log("update home");
+  };
+
+  onLogin = (username, token) => {
+    console.log("fired login");
+    let userObj = {
+      username,
+      token
+    };
+    this.setState({ user: userObj });
+  };
 
   swapActiveComponent = newComponent => {
     this.setState({ activeComponent: newComponent });
@@ -25,14 +39,17 @@ class App extends React.Component {
       comp = <Home />;
     }
     if (this.state.activeComponent === "Login") {
-      comp = <Login />;
+      comp = <Login onLogin={this.onLogin} />;
     }
     if (this.state.activeComponent === "Signup") {
       comp = <Signup />;
     }
     return (
       <div className="main">
-        <HeaderBar setActiveComponent={this.swapActiveComponent} />
+        <HeaderBar
+          setActiveComponent={this.swapActiveComponent}
+          user={this.state.user}
+        />
         {comp}
       </div>
     );

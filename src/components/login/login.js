@@ -29,6 +29,7 @@ class Login extends React.Component {
       modalHeader: "Log in",
       modalText: res.data
     });
+    this.props.onLogin(user, "tempToken");
   };
 
   inputUpdate = evt => {

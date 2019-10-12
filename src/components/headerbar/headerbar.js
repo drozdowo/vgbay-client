@@ -7,18 +7,12 @@ import "./headerbar.css";
 
 class HeaderBar extends React.Component {
   render = () => {
-    return (
-      <AppBar position="relative">
-        <Toolbar>
-          <Button
-            className="button"
-            onClick={() => {
-              this.props.setActiveComponent("Home");
-            }}
-          >
-            🏠 vgBay
-          </Button>
-          <div className="spacer" />
+    let username;
+    let bar;
+
+    if (!this.props.user || !this.props.user.username) {
+      bar = (
+        <div>
           <Button
             height="100%"
             className="button"
@@ -37,6 +31,27 @@ class HeaderBar extends React.Component {
           >
             Log In
           </Button>
+        </div>
+      );
+    } else {
+      //we're logged in, and we have  a user object.
+      username = this.props.user.username;
+      bar = <div> username: {username}</div>;
+    }
+
+    return (
+      <AppBar position="relative">
+        <Toolbar>
+          <Button
+            className="button"
+            onClick={() => {
+              this.props.setActiveComponent("Home");
+            }}
+          >
+            🏠 vgBay
+          </Button>
+          <div className="spacer" />
+          {bar}
         </Toolbar>
       </AppBar>
     );
