@@ -36,7 +36,29 @@ class HeaderBar extends React.Component {
     } else {
       //we're logged in, and we have  a user object.
       username = this.props.user.username;
-      bar = <div> username: {username}</div>;
+      bar = (
+        <span>
+          Logged in as: {username}
+          <Button
+            className="button"
+            height="100%"
+            onClick={() => {
+              this.props.setActiveComponent("Login");
+            }}
+          >
+            Post Ad
+          </Button>
+          <Button
+            className="button"
+            height="100%"
+            onClick={() => {
+              this.props.setActiveComponent("Login");
+            }}
+          >
+            Check Messages
+          </Button>
+        </span>
+      );
     }
 
     return (
