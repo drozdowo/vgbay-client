@@ -20,13 +20,29 @@ class App extends React.Component {
     console.log("update home");
   };
 
+  componentWillMount = () => {
+    if (localStorage.getItem("username") && localStorage.getItem("token")) {
+      //user is already logged in
+      console.log("logged in");
+      this.onLogin(
+        localStorage.getItem("username"),
+        localStorage.getItem("token")
+      );
+    }
+  };
+
   onLogin = (username, token) => {
-    console.log("fired login");
     let userObj = {
       username,
       token
     };
     this.setState({ user: userObj });
+  };
+
+  onLogout = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    this.setState({ user: {} });
   };
 
   swapActiveComponent = newComponent => {
@@ -49,6 +65,7 @@ class App extends React.Component {
         <HeaderBar
           setActiveComponent={this.swapActiveComponent}
           user={this.state.user}
+          onLogout={this.onLogout}
         />
         {comp}
       </div>

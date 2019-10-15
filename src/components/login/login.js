@@ -29,9 +29,11 @@ class Login extends React.Component {
       modalHeader: "Log in",
       modalText: res.data.message
     });
-    localStorage.setItem("username", user);
-    localStorage.setItem("token", res.data.token);
-    this.props.onLogin(user, res.data.token);
+    if (res.data.success) {
+      localStorage.setItem("username", user);
+      localStorage.setItem("token", res.data.token);
+      this.props.onLogin(user, res.data.token);
+    }
   };
 
   inputUpdate = evt => {

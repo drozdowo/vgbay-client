@@ -57,6 +57,15 @@ class HeaderBar extends React.Component {
           >
             Check Messages
           </Button>
+          <Button
+            className="button"
+            height="100%"
+            onClick={() => {
+              this.props.onLogout();
+            }}
+          >
+            Log Out
+          </Button>
         </span>
       );
     }
