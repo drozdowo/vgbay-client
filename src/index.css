@@ -39,3 +39,8 @@ body {
 .welcome {
   color: blue;
 }
+
+.adHolder {
+  width: 50vw;
+  min-height: 10vw;
+}
