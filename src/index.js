@@ -4,6 +4,7 @@ import HeaderBar from "./components/headerbar/headerbar";
 import Home from "./components/home/home";
 import Login from "./components/login/login";
 import Signup from "./components/signup/signup";
+import Search from "./components/search/search";
 
 import "./index.css";
 
@@ -54,8 +55,16 @@ class App extends React.Component {
     if (this.state.activeComponent === "Home") {
       comp = <Home />;
     }
+    if (this.state.activeComponent === "Search") {
+      comp = <Search />;
+    }
     if (this.state.activeComponent === "Login") {
-      comp = <Login onLogin={this.onLogin} />;
+      comp = (
+        <Login
+          onLogin={this.onLogin}
+          setActiveComponent={this.swapActiveComponent}
+        />
+      );
     }
     if (this.state.activeComponent === "Signup") {
       comp = <Signup />;
