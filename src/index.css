@@ -35,3 +35,12 @@ body {
   height: 100%;
   width: 100%;
 }
+
+.welcome {
+  color: blue;
+}
+
+.adHolder {
+  width: 50vw;
+  min-height: 10vw;
+}

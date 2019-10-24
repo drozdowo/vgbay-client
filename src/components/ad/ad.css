@@ -1,0 +1,46 @@
+.ad-item {
+  margin-top: 5px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.ad-item:hover {
+  animation: adItem 0.25s forwards;
+}
+
+@keyframes adItem {
+  0% {
+    background-color: grey;
+  }
+  100% {
+    background-color: rgba(0, 110, 255, 0.5);
+  }
+}
+
+.ad-item > .image {
+  margin-right: 5px;
+}
+
+.ad-item > .itemInfo {
+  flex: 80;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ad-item > .category {
+  font-size: 0.75rem;
+}
+
+.itemInfo > .itemName {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.itemInfo > .poster {
+  font-style: italic;
+  font-size: 0.5rem;
+}

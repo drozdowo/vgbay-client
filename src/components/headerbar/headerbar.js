@@ -49,7 +49,14 @@ class HeaderBar extends React.Component {
           </Button>
           <Button
             className="button"
-            height="100%"
+            onClick={() => {
+              this.props.setActiveComponent("Search");
+            }}
+          >
+            Search Ads
+          </Button>
+          <Button
+            className="button"
             onClick={() => {
               this.props.setActiveComponent("Login");
             }}
@@ -58,16 +65,14 @@ class HeaderBar extends React.Component {
           </Button>
           <Button
             className="button"
-            height="100%"
             onClick={() => {
               this.props.setActiveComponent("Login");
             }}
           >
-            Check Messages
+            Messages
           </Button>
           <Button
             className="button"
-            height="100%"
             onClick={() => {
               this.props.onLogout();
             }}
