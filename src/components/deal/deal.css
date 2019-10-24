@@ -1,0 +1,37 @@
+.deal {
+  display: flex;
+  flex-direction: column;
+  flex: 20;
+  justify-content: space-between;
+  word-wrap: none;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
+}
+
+.deal > .category {
+  font-size: 1.5vw;
+}
+
+.deal > .name {
+  font-size: 2vw;
+  text-align: center;
+  color: blue;
+}
+
+.deal > .percent {
+  font-size: 1.5vw;
+  color: red;
+}
+
+.deal:hover {
+  animation: dealhover 0.25s forwards;
+}
+
+@keyframes dealhover {
+  0% {
+    background-color: grey;
+  }
+  100% {
+    background-color: rgba(0, 110, 255, 0.5);
+  }
+}

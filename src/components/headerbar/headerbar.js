@@ -84,7 +84,7 @@ class HeaderBar extends React.Component {
     }
 
     return (
-      <AppBar position="relative">
+      <AppBar position="fixed" className="header">
         <Toolbar>
           <Button
             className="button"

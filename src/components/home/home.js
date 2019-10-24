@@ -3,6 +3,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/List";
 import Axios from "axios";
 import Ad from "../ad/ad";
+import Deal from "../deal/deal";
 
 /**
  * Home Component
@@ -65,6 +66,20 @@ class Home extends React.Component {
         <h1 className="welcome">
           Welcome to vgBay - Your go to shop for games!
         </h1>
+        <span> Deals: </span>
+        <div className="dealBox">
+          <Deal
+            category="Games (Accounts)"
+            name="LEM CS:GO Account"
+            percentOff="33"
+          />
+          <Deal
+            category="Games (Boxed)"
+            name="Call of Duty: Modern Warfare"
+            percentOff="10"
+          />
+          <Deal category="Consoles" name="Nintendo Switch" percentOff="20" />
+        </div>
         <span>New Ads:</span>
         <div className="adHolder">{ads}</div>
       </div>
