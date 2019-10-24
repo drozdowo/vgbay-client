@@ -7,6 +7,7 @@ import Signup from "./components/signup/signup";
 import Search from "./components/search/search";
 
 import "./index.css";
+import Profile from "./components/profile/profile";
 
 class App extends React.Component {
   constructor() {
@@ -57,6 +58,9 @@ class App extends React.Component {
     }
     if (this.state.activeComponent === "Search") {
       comp = <Search />;
+    }
+    if (this.state.activeComponent === "Profile") {
+      comp = <Profile />;
     }
     if (this.state.activeComponent === "Login") {
       comp = (

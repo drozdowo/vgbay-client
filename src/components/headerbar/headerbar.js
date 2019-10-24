@@ -38,7 +38,15 @@ class HeaderBar extends React.Component {
       username = this.props.user.username;
       bar = (
         <span>
-          Logged in as: {username}
+          Logged in as {username}
+          <Button
+            className="button"
+            onClick={() => {
+              this.props.setActiveComponent("Profile");
+            }}
+          >
+            Profile
+          </Button>
           <Button
             className="button"
             onClick={() => {

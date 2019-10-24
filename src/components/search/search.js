@@ -69,7 +69,10 @@ class Search extends React.Component {
       <div className="component">
         <h1 className="welcome"> Search for Ads </h1>
         <Input onChange={this.typed}></Input>
-        <Button onClick={this.doSearch}> Search </Button>
+        <Button variant="outlined" onClick={this.doSearch}>
+          {" "}
+          Search{" "}
+        </Button>
         {comp}
       </div>
     );
