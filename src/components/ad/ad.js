@@ -9,11 +9,11 @@ import ListItem from "@material-ui/core/ListItem";
  */
 class Ad extends React.Component {
   clicked = () => {
-    console.log("clicked ", this.props.name);
+    console.log("clicked ", this.props.name, " ", this.props.itemId);
   };
   render = () => {
     return (
-      <ListItem key={this.props.id} className="ad-item" onClick={this.clicked}>
+      <ListItem className="ad-item" onClick={this.clicked}>
         <Avatar className="image">temp</Avatar>
         <div className="itemInfo">
           <span className="itemName">{this.props.name}</span>

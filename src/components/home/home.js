@@ -32,6 +32,7 @@ class Home extends React.Component {
       let listItem = (
         <Ad
           key={item.id}
+          itemId={item.id}
           name={item.name}
           price={item.price}
           poster={item.poster}
