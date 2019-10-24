@@ -6,6 +6,7 @@ import Login from "./components/login/login";
 import Signup from "./components/signup/signup";
 
 import "./index.css";
+import Profile from "./components/profile/profile";
 
 class App extends React.Component {
   constructor() {
@@ -53,6 +54,12 @@ class App extends React.Component {
     let comp;
     if (this.state.activeComponent === "Home") {
       comp = <Home />;
+    }
+    if (this.state.activeComponent === "Search") {
+      comp = <Search />;
+    }
+    if (this.state.activeComponent === "Profile") {
+      comp = <Profile />;
     }
     if (this.state.activeComponent === "Login") {
       comp = <Login onLogin={this.onLogin} />;
