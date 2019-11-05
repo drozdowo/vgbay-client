@@ -58,7 +58,7 @@ class HeaderBar extends React.Component {
           <Button
             className="button"
             onClick={() => {
-              this.props.setActiveComponent("Login");
+              this.props.setActiveComponent("PostAd");
             }}
           >
             Post Ad
@@ -84,7 +84,7 @@ class HeaderBar extends React.Component {
     }
 
     return (
-      <AppBar position="fixed" className="header">
+      <AppBar position="sticky" className="header">
         <Toolbar>
           <Button
             className="button"

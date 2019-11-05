@@ -5,6 +5,7 @@ import Home from "./components/home/home";
 import Login from "./components/login/login";
 import Signup from "./components/signup/signup";
 import Search from "./components/search/search";
+import PostAd from "./components/postad/postad";
 
 import "./index.css";
 import Profile from "./components/profile/profile";
@@ -61,6 +62,9 @@ class App extends React.Component {
     }
     if (this.state.activeComponent === "Profile") {
       comp = <Profile />;
+    }
+    if (this.state.activeComponent === "PostAd") {
+      comp = <PostAd />;
     }
     if (this.state.activeComponent === "Login") {
       comp = (
