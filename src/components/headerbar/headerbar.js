@@ -66,10 +66,10 @@ class HeaderBar extends React.Component {
           <Button
             className="button"
             onClick={() => {
-              this.props.setActiveComponent("Login");
+              this.props.setActiveComponent("MyAd");
             }}
           >
-            Messages
+            My Ads
           </Button>
           <Button
             className="button"

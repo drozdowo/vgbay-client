@@ -9,6 +9,7 @@ import PostAd from "./components/postad/postad";
 
 import "./index.css";
 import Profile from "./components/profile/profile";
+import MyAd from "./components/myad/myad";
 
 class App extends React.Component {
   constructor() {
@@ -65,6 +66,9 @@ class App extends React.Component {
     }
     if (this.state.activeComponent === "PostAd") {
       comp = <PostAd />;
+    }
+    if (this.state.activeComponent === "MyAd") {
+      comp = <MyAd />;
     }
     if (this.state.activeComponent === "Login") {
       comp = (

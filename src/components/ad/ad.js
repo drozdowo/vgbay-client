@@ -12,6 +12,15 @@ class Ad extends React.Component {
     console.log("clicked ", this.props.name, " ", this.props.itemId);
   };
   render = () => {
+    let price = this.props.price ? this.props.price.toString() : undefined;
+    if (!price) {
+      price = "Offer";
+    } else {
+      if (price.indexOf("$") < 0) {
+        price = "$" + price;
+      }
+    }
+
     return (
       <ListItem className="ad-item" onClick={this.clicked}>
         <Avatar className="image">temp</Avatar>
@@ -24,6 +33,7 @@ class Ad extends React.Component {
             {" "}
             Posted By: {this.props.poster} on {this.props.date}
           </span>
+          <div className="price">{price}</div>
         </div>
       </ListItem>
     );

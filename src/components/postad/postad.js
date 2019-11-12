@@ -1,5 +1,6 @@
 import React from "react";
 import { TextField, Button } from "@material-ui/core";
+import Axios from "axios";
 
 /**
  * PostAd Component
@@ -14,6 +15,20 @@ class PostAd extends React.Component {
       price: ""
     };
   }
+
+  postAd = async () => {
+    let result = await Axios.post(
+      "http://localhost:3000/user/createad",
+      {
+        category: this.state.category,
+        name: this.state.name,
+        description: this.state.description,
+        price: this.state.price
+      },
+      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+    );
+    console.log(result);
+  };
 
   handleChange = evt => {
     let field = evt.target.name;
@@ -53,13 +68,16 @@ class PostAd extends React.Component {
           multiline
         ></TextField>
         <TextField
-          name="category"
-          title="Category"
-          label="Category"
+          name="price"
+          title="Price"
+          label="Price"
           variant="outlined"
           onChange={this.handleChange}
         ></TextField>
-        <Button variant="outlined"> Post Ad </Button>
+        <Button variant="outlined" onClick={this.postAd}>
+          {" "}
+          Post Ad{" "}
+        </Button>
       </div>
     );
   };
