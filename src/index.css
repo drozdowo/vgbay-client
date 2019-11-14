@@ -51,3 +51,7 @@ body {
   justify-content: space-around;
   width: 50vw;
 }
+
+.categorySelect {
+  width: 25%;
+}
