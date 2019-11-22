@@ -55,3 +55,18 @@ body {
 .categorySelect {
   width: 25%;
 }
+
+.adData {
+  display: flex;
+  flex-direction: column;
+}
+
+.adHeader {
+  color: blue;
+  text-align: center;
+}
+
+.adInfo {
+  color: darkblue;
+  text-align: center;
+}

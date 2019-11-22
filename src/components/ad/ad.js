@@ -9,7 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
  */
 class Ad extends React.Component {
   clicked = () => {
-    console.log("clicked ", this.props.name, " ", this.props.itemId);
+    window.App.swapActiveComponent(`ad:${this.props.itemId}`);
   };
   render = () => {
     let price = this.props.price ? this.props.price.toString() : undefined;

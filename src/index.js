@@ -6,6 +6,7 @@ import Login from "./components/login/login";
 import Signup from "./components/signup/signup";
 import Search from "./components/search/search";
 import PostAd from "./components/postad/postad";
+import ViewAd from "./components/viewad/viewad";
 
 import "./index.css";
 import Profile from "./components/profile/profile";
@@ -55,6 +56,11 @@ class App extends React.Component {
 
   render() {
     let comp;
+    if (this.state.activeComponent.indexOf("ad:") > -1) {
+      //viewing an ad
+      let adId = this.state.activeComponent.split(":")[1];
+      comp = <ViewAd ad={adId} />;
+    }
     if (this.state.activeComponent === "Home") {
       comp = <Home />;
     }
@@ -94,4 +100,11 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <App
+    ref={App => {
+      window.App = App;
+    }}
+  />,
+  document.getElementById("root")
+);
