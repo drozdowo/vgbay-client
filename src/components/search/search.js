@@ -73,6 +73,15 @@ class Search extends React.Component {
           {" "}
           Search{" "}
         </Button>
+        <h3 className="welcome"> Filters </h3>
+        <div className="filters">
+          <h3 className="adData">
+            <span className="adHeader"> Category </span>{" "}
+          </h3>
+          <h3 className="adData">
+            <span className="adHeader"> Location </span>{" "}
+          </h3>
+        </div>
         {comp}
       </div>
     );

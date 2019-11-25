@@ -4,7 +4,15 @@ import ListItem from "@material-ui/core/List";
 import Axios from "axios";
 import Ad from "../ad/ad";
 import "./profile.css";
-import { TextField, Button, Modal } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  Modal,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl
+} from "@material-ui/core";
 
 /**
  * Profile Component
@@ -20,7 +28,8 @@ class Profile extends React.Component {
       address: "",
       data: {},
       showModal: false,
-      modalText: ""
+      modalText: "",
+      cities: []
     };
   }
 
@@ -52,9 +61,38 @@ class Profile extends React.Component {
     }
   };
 
+  getCities = async () => {
+    let cities = await Axios.get("http://localhost:3000/search/getcities");
+    if (cities.status === 200) {
+      if (cities.data.dataType == "cities") {
+        this.setState({ cities: cities.data.data });
+      }
+    } else {
+      this.setState({
+        modalText: "There was an error retrieving cities - " + res.data.data,
+        showModal: true
+      });
+    }
+  };
+
   componentWillMount = async () => {
+    this.getCities();
     //make call to backend and get our profile information to display
     this.getProfileInfo();
+  };
+
+  formatCities = () => {
+    let cities = this.state.cities;
+    let menuItems = [];
+    for (let i = 0; i < cities.length; i++) {
+      let cityObj = cities[i];
+      menuItems.push(
+        <MenuItem key={cityObj.city_id} value={cityObj.city_id}>
+          {cityObj.city_name}
+        </MenuItem>
+      );
+    }
+    return menuItems;
   };
 
   handleChange = evt => {
@@ -93,6 +131,11 @@ class Profile extends React.Component {
     }
   };
 
+  setCity = evt => {
+    console.log(evt.target.value);
+    this.setState({ city: evt.target.value });
+  };
+
   render = () => {
     let modal;
     if (this.state.showModal) {
@@ -119,7 +162,7 @@ class Profile extends React.Component {
               <b>
                 <u>City:</u>
               </b>{" "}
-              {this.state.data.city}
+              {this.state.data.city_name}
             </span>
             <span>
               <b>
@@ -147,12 +190,18 @@ class Profile extends React.Component {
               label="Email"
               onChange={this.handleChange}
             ></TextField>
-            <TextField
-              name="city"
-              title="City"
-              label="City"
-              onChange={this.handleChange}
-            ></TextField>
+            <FormControl>
+              <InputLabel id="label">City</InputLabel>
+              <Select
+                name="City"
+                title="City"
+                id="demo-simple-select"
+                value={this.state.city}
+                onChange={this.setCity}
+              >
+                {this.formatCities()}
+              </Select>
+            </FormControl>
             <TextField
               name="postalcode"
               title="Postal Code"
