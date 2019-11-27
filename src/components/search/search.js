@@ -28,7 +28,9 @@ class Search extends React.Component {
   }
   doSearch = async () => {
     let res = await Axios.post("http://localhost:3000/search/searchterm", {
-      term: this.state.term
+      term: this.state.term,
+      city: this.state.city,
+      category: this.state.category
     });
     if (res.status == 200) {
       if (res.data.dataType == "search") {
@@ -57,7 +59,11 @@ class Search extends React.Component {
         cities.data.dataType === "cities" &&
         categories.data.dataType === "categories"
       ) {
-        this.setState({ cities: cities, categories: categories });
+        console.log("filter", cities.data.data, categories.data.data);
+        this.setState({
+          cities: cities.data.data,
+          categories: categories.data.data
+        });
       }
     } else {
       console.log("err getting data");
@@ -110,6 +116,14 @@ class Search extends React.Component {
       );
     }
     return menuItems;
+  };
+
+  setCity = evt => {
+    this.setState({ city: evt.target.value });
+  };
+
+  setCategory = evt => {
+    this.setState({ category: evt.target.value });
   };
 
   render = () => {

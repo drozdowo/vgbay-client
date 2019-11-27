@@ -32,7 +32,7 @@ class PostAd extends React.Component {
     let result = await Axios.post(
       "http://localhost:3000/user/createad",
       {
-        category: this.state.categories[this.state.category + 1].category,
+        category: this.state.category,
         name: this.state.name,
         description: this.state.description,
         price: this.state.price
