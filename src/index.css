@@ -73,5 +73,7 @@ body {
 
 .filters {
   display: flex;
+  width: 25%;
   flex-direction: row;
+  justify-content: space-around;
 }

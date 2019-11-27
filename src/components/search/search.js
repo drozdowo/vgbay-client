@@ -1,5 +1,12 @@
 import React from "react";
-import { Input, Button, ListItem } from "@material-ui/core";
+import {
+  Input,
+  Button,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Select
+} from "@material-ui/core";
 import Ad from "../ad/ad";
 import Axios from "axios";
 
@@ -12,16 +19,19 @@ class Search extends React.Component {
     super();
     this.state = {
       term: "",
-      ads: []
+      ads: [],
+      city: null,
+      category: null,
+      cities: [],
+      categories: []
     };
   }
   doSearch = async () => {
     let res = await Axios.post("http://localhost:3000/search/searchterm", {
       term: this.state.term
     });
-    if ((res.status = 200)) {
+    if (res.status == 200) {
       if (res.data.dataType == "search") {
-        console.log("got ", res.data.data);
         this.setState({
           ads: this.dataToListItems(res.data.data)
         });
@@ -33,6 +43,25 @@ class Search extends React.Component {
     this.setState({
       term: val
     });
+  };
+
+  componentDidMount = () => {
+    this.getFilterData();
+  };
+
+  getFilterData = async () => {
+    let cities = await Axios.get("http://localhost:3000/search/getcities");
+    let categories = await Axios.get("http://localhost:3000/search/categories");
+    if (cities.status === 200 && categories.status === 200) {
+      if (
+        cities.data.dataType === "cities" &&
+        categories.data.dataType === "categories"
+      ) {
+        this.setState({ cities: cities, categories: categories });
+      }
+    } else {
+      console.log("err getting data");
+    }
   };
 
   dataToListItems = data => {
@@ -54,6 +83,35 @@ class Search extends React.Component {
     });
     return ads;
   };
+
+  formatCities = () => {
+    let cities = this.state.cities;
+    let menuItems = [];
+    for (let i = 0; i < cities.length; i++) {
+      let cityObj = cities[i];
+      menuItems.push(
+        <MenuItem key={cityObj.city_id} value={cityObj.city_id}>
+          {cityObj.city_name}
+        </MenuItem>
+      );
+    }
+    return menuItems;
+  };
+
+  formatCategories = () => {
+    let categories = this.state.categories;
+    let menuItems = [];
+    for (let i = 0; i < categories.length; i++) {
+      let categoryObj = categories[i];
+      menuItems.push(
+        <MenuItem key={categoryObj.id} value={categoryObj.id}>
+          {categoryObj.category}
+        </MenuItem>
+      );
+    }
+    return menuItems;
+  };
+
   render = () => {
     let comp;
     if (this.state.ads) {
@@ -75,12 +133,30 @@ class Search extends React.Component {
         </Button>
         <h3 className="welcome"> Filters </h3>
         <div className="filters">
-          <h3 className="adData">
-            <span className="adHeader"> Category </span>{" "}
-          </h3>
-          <h3 className="adData">
-            <span className="adHeader"> Location </span>{" "}
-          </h3>
+          <FormControl>
+            <InputLabel id="label">City</InputLabel>
+            <Select
+              name="City"
+              title="City"
+              id="demo-simple-select"
+              value={this.state.city}
+              onChange={this.setCity}
+            >
+              {this.formatCities()}
+            </Select>
+          </FormControl>
+          <FormControl>
+            <InputLabel id="label">Category</InputLabel>
+            <Select
+              name="Category"
+              title="Category"
+              id="demo-simple-select"
+              value={this.state.category}
+              onChange={this.setCategory}
+            >
+              {this.formatCategories()}
+            </Select>
+          </FormControl>
         </div>
         {comp}
       </div>
